@@ -4,7 +4,7 @@
   "name": "cloudshadow-core-ui",
   "author": "cloudshadow",
   "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "dist/types/index.d.ts",
   "module": "dist/cloudshadow.core.ui.esm.js",
   "files": [
     "dist"
