@@ -16,15 +16,43 @@ export default {
       format: 'cjs',
       sourcemap: true,
       // name: 'react-lib',
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
+    },
+    {
+      file: packageJson.browsers,
+      format: 'iife',
+      sourcemap: true,
+      name: 'CloudCoreUI',
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
     },
     {
       file: packageJson.module,
       format: 'esm',
       sourcemap: true,
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
+    },
+    {
+      file: packageJson.umd,
+      format: 'umd',
+      sourcemap: true,
+      name: 'CloudCoreUI',
+      globals: {
+        react: 'React',
+        'react-dom': 'ReactDOM',
+      },
     },
   ],
   plugins: [
-    external(),
+    external('React'),
     commonjs(),
     linaria({
       // exclude: ['node_modules/**'],
