@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "MIT",
   "name": "cloudshadow-core-ui",
   "author": "cloudshadow",
@@ -7,21 +7,20 @@
   "module": "dist/index.esm.js",
   "typings": "dist/types/index.d.ts",
   "files": [
-    "dist",
-    "styles.css"
+    "dist"
   ],
   "engines": {
     "node": ">=10"
   },
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && rollup -c --bundleConfigAsCjs",
+    "build": "npm run clean && rollup --config",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "peerDependencies": {
-    "react": ">=16"
-  },
+  "sideEffects": [
+    "*.css"
+  ],
   "prettier": {
     "printWidth": 80,
     "semi": true,
@@ -78,5 +77,8 @@
     "storybook": "^7.0.0-rc.5",
     "tslib": "^2.5.0",
     "typescript": "^5.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=16"
   }
 }

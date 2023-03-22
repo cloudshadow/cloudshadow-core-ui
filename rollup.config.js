@@ -1,9 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
-import terser from '@rollup/plugin-terser';
+// import terser from '@rollup/plugin-terser';
 import external from 'rollup-plugin-peer-deps-external';
-// import postcss from 'rollup-plugin-postcss';
 import linaria from '@linaria/rollup';
 import css from 'rollup-plugin-css-only';
 
@@ -18,13 +17,15 @@ export default {
       sourcemap: true,
       // name: 'react-lib',
     },
-    // {
-    //   file: packageJson.module,
-    //   format: 'esm',
-    //   sourcemap: true,
-    // },
+    {
+      file: packageJson.module,
+      format: 'esm',
+      sourcemap: true,
+    },
   ],
   plugins: [
+    external(),
+    commonjs(),
     linaria({
       // exclude: ['node_modules/**'],
       // evaluate: true,
@@ -33,11 +34,9 @@ export default {
     css({
       output: 'styles.css',
     }),
-    external(),
     resolve(),
-    commonjs(),
     typescript({ tsconfig: './tsconfig.json' }),
     // postcss(),
-    terser(),
+    // terser(),
   ],
 };
