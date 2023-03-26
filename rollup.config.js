@@ -5,6 +5,7 @@ import typescript from '@rollup/plugin-typescript';
 import external from 'rollup-plugin-peer-deps-external';
 import linaria from '@linaria/rollup';
 import css from 'rollup-plugin-css-only';
+import replace from '@rollup/plugin-replace';
 
 const packageJson = require('./package.json');
 
@@ -57,13 +58,16 @@ export default {
     linaria({
       // exclude: ['node_modules/**'],
       // evaluate: true,
-      sourceMap: process.env.NODE_ENV !== 'production',
+      sourceMap: true,
     }),
     css({
       output: 'styles.css',
     }),
     resolve(),
     typescript({ tsconfig: './tsconfig.json' }),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    })
     // postcss(),
     // terser(),
   ],
